@@ -1,9 +1,9 @@
 /* Defino mi paleta de colores.
 Es una ventaja ya q me permite no tener q andar definiendo colores por cada cosa */
 :root{
-    --clr-blue:#306951;/* 4b33a8 */
+    --clr-blue:#2c7255;/* 4b33a8 */
     --clr-white:#ececec;
-    --clr-gray:#e2e2e2;
+    --clr-gray:#dacecee8;
     --clr-red:red ;
 }
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
@@ -111,13 +111,28 @@ en la clase anterior)*/
     box-shadow:0 -1rem 0 var(--clr-white) ;
 }
 
-.botonMenu.botonCarrito{
+.botonCarrito{
     text-decoration: none;
     margin-top: 2rem; /* para alejarlo del menu de categorias */
 }
 
+.numCarrito { 
+    background-color: var(--clr-white);
+    color: var(--clr-blue);
+    border-radius: 0.25rem;  
+    width: 1rem; /* Define la anchura */
+    text-align: center; /* Alinea el texto dentro del elemento */
+}
+
+
+/* .botonCarrito.active.numCarrito{
+    background-color:var(--clr-blue);
+    color: var(--clr-white);
+} */
+
+
 i.bi-hand-index-thumb-fill,
-i.bi-hand-index-thumb {
+i.bi-hand-index-thumb { /* esto me rota el icono de las manos */
     transform: rotateZ(90deg);
 }
 
@@ -207,9 +222,9 @@ main{
     flex-direction: column;
     gap:1.5rem;
 }
-.carritoVacio{
-    color: var(--clr-white);
-    display: none; /* para hacer de cuenta q el carrito no esta vacio */
+.carritoVacio,.carritoComprado{
+    color: var(--clr-blue);
+     /* para hacer de cuenta q el carrito no esta vacio */
 }
 
 .carritoProductos{
@@ -300,7 +315,10 @@ main{
     margin-bottom: 0rem;
 }
 
-
+.disbled{
+    display: none;
+}/* creamos esta clase pa todo aquello q querramos ocultar en cierto momento
+en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los elementos */
 
 
 
