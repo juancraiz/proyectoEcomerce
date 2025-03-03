@@ -57,7 +57,7 @@ aside{
     display:flex;
     flex-direction: column;
     justify-content:space-between;
-    gap:0rem; /* para q haya un especaio entre cada elemento de la barra */
+    gap:0.5rem; /* para q haya un especaio entre cada elemento de la barra */
     margin-left: -2rem;
 
 }
@@ -73,12 +73,13 @@ aside{
     font-size: 0.90rem; /* para el tamaño de la letra */ 
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
+    width: 100%;/* para q el maximo de blanco de fondo sea el 100% del tamaño de la letra */
 }
 
 .botonMenu.active{
     background-color: var(--clr-white);
     color: var(--clr-blue);
-    width: 100%;/* para q el maximo de blanco de fondo sea el 100% del tamaño de la letra */
+    
     position:relative;
 }
 
@@ -89,6 +90,7 @@ aplicar la magia buscando la vuelta al border radius(en principio poner position
 en la clase anterior)*/
 .botonMenu.active::before{
     content: 'A';
+    color:transparent; /*color de la letra */
     position:absolute;
     width:1rem;
     height: 2rem;
@@ -120,7 +122,7 @@ en la clase anterior)*/
     background-color: var(--clr-white);
     color: var(--clr-blue);
     border-radius: 0.25rem;  
-    width: 1rem; /* Define la anchura */
+    width: 1.5rem; /* Define la anchura */
     text-align: center; /* Alinea el texto dentro del elemento */
 }
 
@@ -315,7 +317,7 @@ main{
     margin-bottom: 0rem;
 }
 
-.disbled{
+.disabled{
     display: none;
 }/* creamos esta clase pa todo aquello q querramos ocultar en cierto momento
 en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los elementos */
