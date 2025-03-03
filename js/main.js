@@ -281,7 +281,7 @@ function actualizarBotonesAgregar(){
 
 // geteamos/traemos el array del L.Storage por si nos salimos del index.html y queremos acceder nuevamente a index.html
 let productosEnCarrito;
-const productosEnCarritoLS = JSON.parse(localStorage.getItem("productosEnCarrito"));//traigo array de productos del L.Storage
+let productosEnCarritoLS = JSON.parse(localStorage.getItem("productosEnCarrito"));//traigo array de productos del L.Storage
 
 if (productosEnCarritoLS) {
     productosEnCarrito = productosEnCarritoLS; //paso a productosEnCarrito lo del L.Storage
