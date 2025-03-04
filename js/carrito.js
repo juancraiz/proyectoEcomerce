@@ -118,24 +118,7 @@ function actualizarTotal(){
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito(){
 
-    // Creo mensaje con la lista de productos
-    let mensaje = "¡Hola! Estoy interesado en comprar los siguientes productos: \n";
-
-    productosEnCarrito.forEach(producto => {
-        mensaje += `Nombre: ${producto.titulo} - Cantidad: ${producto.cantidad} \n`;
-    });
-
-    const totalCalcu = productosEnCarrito.reduce((tot,producto) =>  tot + (producto.precio * producto.cantidad),0)
-
-    mensaje += `💵 Total: $${totalCalcu}`
-
-    let numeroWsp = "543445415643"
-    // URL de Wsp con el mensaje predefinido
-    let urlWhatsApp = `https://wa.me/${numeroWsp}?text=${encodeURIComponent(mensaje)}`;
-
-    // Redirijo al usuario a wsp
-    window.open(urlWhatsApp, "_blank");
-
+    enviarCompraPorWsp();
 
     productosEnCarrito.length = 0;//vaciamos
     localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito));
@@ -145,6 +128,28 @@ function comprarCarrito(){
     contenedorCarritoAcciones.classList.add('disabled'); 
     contenedorCarritoComprado.classList.remove('disabled'); //que aparezca q fue comprado
 
+}
+
+function enviarCompraPorWsp(){
+    // Creo mensaje con la lista de productos
+    let mensaje = "¡Hola! Estoy interesado en comprar los siguientes productos: \n";
+
+    productosEnCarrito.forEach(producto => {
+        mensaje += `Nombre: ${producto.titulo} - Cantidad: ${producto.cantidad} \n`;
+    });
+
+    mensaje += `Total: $${calcularTotal()}`
+
+    let numeroWsp = "543445415643"
+
+    let urlWhatsApp = `https://wa.me/${numeroWsp}?text=${encodeURIComponent(mensaje)}`; // URL de Wsp con el mensaje predefinido
+
+    window.open(urlWhatsApp, "_blank");  // Redirijo al usuario a wsp
+}
+
+function calcularTotal(){
+   const totalCalcu = productosEnCarrito.reduce((tot,producto) =>  tot + (producto.precio * producto.cantidad),0) ;
+    return totalCalcu;
 }
 
 

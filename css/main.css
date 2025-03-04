@@ -49,8 +49,8 @@ aside{
 }
 
 .logo{
-  font-weight: 400;
-  font-size: 1.3rem;
+    font-weight: 400;
+    font-size: 1.3rem;
 }
 
 .menu{
@@ -317,10 +317,136 @@ main{
     margin-bottom: 0rem;
 }
 
+/* creamos esta clase pa todo aquello q querramos ocultar en cierto momento
+en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los elementos */
 .disabled{
     display: none;
-}/* creamos esta clase pa todo aquello q querramos ocultar en cierto momento
-en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los elementos */
+}
 
+.headerMobile{
+    display: none;/* xq no queremos ver ese menu en el ordenador */
+}
 
+.closeMenu{
+    display: none;/* xq no queremos ver ese menu en el ordenador */
+}
 
+/***  MEDIA QUERIES  ***/
+
+@media screen and (max-width: 850px){
+    .contenedorProductos{
+    grid-template-columns:1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 675px){
+    .contenedorProductos{
+    grid-template-columns:1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    .wrapper {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    aside{
+        position:fixed;
+        z-index: 9; 
+        background-color: var(--clr-blue);
+       /*display: none; al pcipio no mostramos la barraNav para configurar el main */ 
+        left: 0;
+        box-shadow: 0 0 0 100vmax rgba(0,0, 0, 0.75);/* para opacar el fondo cuando estamos en la barra */        
+        transform: translateX(-100%); /* transicion para ocularse a la izquierda el menu  */
+        opacity: 0;
+        visibility: hidden;/* para q no tape el contenido de productos cuando lo tenemos por encima*/
+        transition: 0.2s;
+    }
+
+    /* class de aside  */
+    .asideVisible{ /* cuando pinchamos el boton de menu mostramos el menu aside */
+        transform:translateX(0%);/* transicion para mostrar el menu  */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .botonMenu.active::before,
+    .botonMenu.active::after {
+        display: none;
+    }
+
+    main{
+        margin: 1rem;
+        margin-top: 0;
+        padding: 2rem; /*padding acorde para mobile */
+    }
+
+    .contenedorProductos{
+        grid-template-columns:1fr 1fr;
+        }
+
+    .headerMobile{
+        margin:1rem;
+        display:flex;
+        justify-content: space-between;
+        align-items: center; /* para q el logo y boton esten centrados verticalmente */
+    }
+
+    .logo2{
+        color:var(--clr-white);
+    }
+
+    .logo{
+        color:var(--clr-white);
+        display: block;
+        margin-top: 0.8rem;
+        margin-left: -1rem; /* Mueve el logo hacia la izquierda */
+        font-size: 1.2rem; /* Ajustá tamaño de letra*/
+    }
+
+    .openMenu ,.closeMenu{            /*botones de abrir/cerrar menu hambur */
+        background-color: transparent;
+        color:var(--clr-gray);
+        border:0;
+        font-size: 2rem;
+        cursor:pointer;
+    }
+
+    .closeMenu{
+        display: block;
+        position:absolute;
+        top:0.4rem; 
+        right:1rem; /* corro a la derecha el boton de cierre */
+        color: var(--clr-white);
+    }
+
+    .carritoProducto{
+        gap:0.5rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 0.5rem;
+    } 
+
+    .carritoProductoSubtotal{
+        display: none;
+    }
+
+    .carritoAcciones{ 
+        flex-wrap: wrap;
+        row-gap:1rem;
+    }
+}
+
+    /* .closeMenu:hover{
+
+    } */
+
+    @media screen and (max-width: 400px){
+        .contenedorProductos{
+        grid-template-columns:1fr;
+        }
+    }

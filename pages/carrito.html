@@ -14,8 +14,28 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <aside>
+    <div class="wrapper">     
+        
+        <!--Mobile  -->
+        <header class="headerMobile">
+            <h1 class="logo2">
+                <img src="../icono/gem.ico" alt="Logo" style="width: 30px; height: 30px; vertical-align: middle;">
+                Sims Clothes
+            </h1>
+            <button class="openMenu" id="openMenu">
+                <i class="bi bi-list"></i> <!-- menu hamburguesa -->
+            </button>
+        </header>
+        <!--/ Mobile -->
+    
+        <aside> <!-- class="asideVisible" -->
+            
+            <!-- Mobile -->
+            <button class="closeMenu" id="closeMenu">
+                <i class="bi bi-x"></i> <!-- boton cerrar -->
+            </button>
+            <!--/ Mobile  -->
+            
             <header>
                 <h1 class="logo">
                     <img src="../icono/gem.ico" alt="Logo" style="width: 30px; height: 30px; vertical-align: middle;">
@@ -74,6 +94,7 @@
         crossorigin="anonymous"></script>
 
         <script type="module" src="../js/carrito.js"></script>
+        <script type="module" src="../js/menuMobile.js"></script>
 </body>
 
 </html>
