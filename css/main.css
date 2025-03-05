@@ -252,7 +252,7 @@ main{
 }
 
 .carritoProductoDato{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .carritoProductoRopa{
@@ -431,6 +431,39 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
         padding: 0.5rem;
     } 
 
+    .carritoProductoImagen{
+        width:3rem;
+    }
+
+    .carritoProductoTitulo{
+        font-size: 0.8rem;
+    }
+
+    .carritoProductoCantidad{
+        font-size: 0.8rem;
+    }
+
+    .carritoProductoSubtotal{
+        font-size: 0.8rem;
+    }
+
+    .carritoProductoTitulo{
+        font-size: 0.8rem;
+    }
+
+    .carritoProductoDato{
+        font-size: 0.7rem;
+    }
+
+    .carritoProductoEliminar{
+        flex-wrap: wrap;
+        /*  position: absolute; --> cuidado con usar esto xq hace q se salga del contenedor gris
+           left: 20rem;                  */
+        justify-content: center;
+        transform: translateY(0%);
+        transform: translateX(130%); 
+    } 
+
     .carritoProductoPrecio{
         display: none;
     }
@@ -448,6 +481,6 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
 
     @media screen and (max-width: 400px){
         .contenedorProductos{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr 1fr; /*los dos frame permite q entren dos productos */
         }
     }
