@@ -437,6 +437,7 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
 
     .carritoProductoTitulo{
         font-size: 0.8rem;
+        
     }
 
     .carritoProductoCantidad{
@@ -448,7 +449,10 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
     }
 
     .carritoProductoTitulo{
-        font-size: 0.8rem;
+        flex: 1; /* Ocupa el espacio restante */
+        min-width: 50px;  /* establezco un ancho minimo para la cadena */
+        max-width: 1px; /* establezco un ancho maximo para la cadena */
+        word-break: break-word; /* Permite que el texto haga salto de línea */
     }
 
     .carritoProductoDato{
@@ -457,12 +461,12 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
 
     .carritoProductoEliminar{
         flex-wrap: wrap;
-        /*  position: absolute; --> cuidado con usar esto xq hace q se salga del contenedor gris
-           left: 20rem;                  */
+        /*position: absolute; --> cuidado con usar esto xq hace q se salga del contenedor gris
+        left: 20rem; */                  
         justify-content: center;
         transform: translateY(0%);
-        transform: translateX(130%); 
-    } 
+        transform: translateX(100%); 
+    }  
 
     .carritoProductoPrecio{
         display: none;
