@@ -2,9 +2,12 @@
 Es una ventaja ya q me permite no tener q andar definiendo colores por cada cosa */
 :root{
     --clr-blue:#2c7255;/* 4b33a8 */
+    --clr-blue2:#266b4e; /* rgb(111, 148, 46); */
     --clr-white:#ececec;
     --clr-gray:#dacecee8;
+    --clr-gray2:#cfcbcf;
     --clr-red:red ;
+    --clr-red2:darkred;
 }
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
 
@@ -269,6 +272,10 @@ main{
     cursor:pointer; /* para q tenga el puntero-manito para seleccionar el tacho */
 }
 
+.carritoProductoEliminar:hover {
+    color: var(--clr-red2); 
+}
+
 .carritoAcciones{
     display: flex;
 /*     flex-direction: row; */
@@ -283,6 +290,13 @@ main{
     color:var(--clr-blue);
     text-transform: uppercase;
     cursor:pointer;
+}
+
+.carritoAccionesVaciar:hover{
+    background-color: var(--clr-gray2);
+    color: var(--clr-blue);
+    transform: scale(1.01); /* Efecto de crecimiento ligero */
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); */ /* Sombra suave */
 }
 
 .carritoAccionesDerec{
@@ -311,6 +325,12 @@ main{
     cursor:pointer;
     border-top-right-radius: 1rem; 
     border-bottom-right-radius: 1rem;   
+}
+.carritoAccionesComprar:hover{
+    background-color: var(--clr-blue2);
+    color: var(--clr-white);
+    transform: scale(1.01); /* Efecto de crecimiento ligero */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
 .tot{
@@ -430,7 +450,7 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
         justify-content: flex-start;
         padding: 0.5rem;
     } 
-
+    /* mi config */
     .carritoProductoImagen{
         width:3rem;
     }
@@ -468,6 +488,8 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
         transform: translateX(100%); 
     }  
 
+      /* mi config */
+    
     .carritoProductoPrecio{
         display: none;
     }
@@ -475,9 +497,12 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
     .carritoAcciones{ 
         flex-wrap: wrap;
         row-gap:1rem;
+    /* font-size: 0.77rem; */
     }
+    
 
-  /*   .Toastify__toast-container {
+
+    /*   .Toastify__toast-container {
         z-index: 9999 ;
         display: block ;
     }       */
