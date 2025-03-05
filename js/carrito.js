@@ -7,18 +7,18 @@ const contenedorCarritoComprado = document.getElementById('carritoComprado')
 
 let botonesEliminar = document.querySelectorAll('.carritoProductoEliminar') //ponemos let xq al pcipio no se trae ningun valor.Xq no esta el html creado
 let botonesVaciar = document.querySelector('.carritoAccionesVaciar')
-const contenedorTotal = document.getElementById("total")  
+const contenedorTotal = document.getElementById("total")
 let botonComprar = document.getElementById("carritoAccionesComprar")
 
 //funcion para cargar productos al carrito
-function cargarProductosCarrito(){
+function cargarProductosCarrito() {
     //Si hay productos en carrito no es nulo y es mayor a 0 su tamaño
-    if (productosEnCarrito && productosEnCarrito.length > 0){
+    if (productosEnCarrito && productosEnCarrito.length > 0) {
 
         contenedorCarritoVacio.classList.add('disabled'); //el disabled oculta la etiqueta html de carrito vacio
         contenedorCarritoProductos.classList.remove('disabled'); //aqui se remueve el disabled, para mostrar el carritoProductos del html
-        contenedorCarritoAcciones.classList.remove('disabled'); 
-        contenedorCarritoComprado.classList.add('disabled'); 
+        contenedorCarritoAcciones.classList.remove('disabled');
+        contenedorCarritoComprado.classList.add('disabled');
 
         contenedorCarritoProductos.innerHTML = "";//limpiamos el contenido anterior
 
@@ -38,7 +38,7 @@ function cargarProductosCarrito(){
                         <h3 class="carritoProductoDato">${producto.cantidad}</h3>
                     </div>
                     <div class="carritoProductoPrecio">
-                        <small>Total</small>
+                        <small>Precio Unitario</small>
                         <h3 class="carritoProductoDato">$${producto.precio}</h3>
                     </div>
                     <div class="carritoProductoSubtotal">
@@ -50,47 +50,48 @@ function cargarProductosCarrito(){
             `;
             contenedorCarritoProductos.appendChild(div);
         });
-                //Si carrito ta vacio
-    } else {                                    
+        //Si carrito ta vacio
+    } else {
         contenedorCarritoVacio.classList.remove('disabled'); //aqui se remueve el disabled, para mostrar el carrito vacio del html
         contenedorCarritoProductos.classList.add('disabled'); //el disabled oculta la etiqueta html de carritoProductos del html
-        contenedorCarritoAcciones.classList.add('disabled'); 
+        contenedorCarritoAcciones.classList.add('disabled');
         contenedorCarritoComprado.classList.add('disabled');
-    } 
+    }
 
     actualizarBotonesEliminar(); //actualizamos data
-    actualizarTotal(); 
+    actualizarTotal();
 }
 
 cargarProductosCarrito();
 
 /* Funcion actualizar los botones de agregar producto cada vez q actualizemos
 una nueva categoria */
-function actualizarBotonesAgregar(){    
-    
+function actualizarBotonesAgregar() {
+
     botonesAgregar = document.querySelectorAll(".productoAgregar");
-    
+
     botonesAgregar.forEach(boton => {
-        boton.addEventListener("click",agregarACarrito);
+        boton.addEventListener("click", agregarACarrito);
     })
 };
 
 /* Funcion actualizar los botones de eliminar producto de carrito */
-function actualizarBotonesEliminar(){    
-    
+function actualizarBotonesEliminar() {
+
     botonesEliminar = document.querySelectorAll(".carritoProductoEliminar");
-    
+
     botonesEliminar.forEach(boton => {
-        boton.addEventListener("click",eliminarDeCarrito);
+        boton.addEventListener("click", eliminarDeCarrito);
     })
 };
 
 /* Funcion-evento al hacer click en Eliminar:*/
-function eliminarDeCarrito(e){
-    
+function eliminarDeCarrito(e) {
+
+    notificacionDeEliminar();
     const idBoton = e.currentTarget.id; //obtenemos el id del producto del html
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton); //extraigo el indice del producto del arrayProductos
-    
+
     productosEnCarrito.splice(index, 1); //elimino el producto del array en dicho indice
     cargarProductosCarrito();
 
@@ -99,38 +100,38 @@ function eliminarDeCarrito(e){
 }
 
 
-//FUNCION vaciar carrito
-botonesVaciar.addEventListener("click", vaciarCarrito);
-function vaciarCarrito(){
-    
+//FUNCION-evento vaciar carrito
+botonesVaciar.addEventListener("click", alertaVaciarCarrito); //antes llamaba a vaciarCarrito aqui, pero es conveniente llamar a la alerta antes
+function vaciarCarrito() {
+
     productosEnCarrito.length = 0; //vaciamos el array de productos en carrito
     localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito));//Guardo productos del carrito en LS
     cargarProductosCarrito();
 }
 
 //FUNCION actualizar total 
-function actualizarTotal(){
-    const totalCalculado = productosEnCarrito.reduce((tot,producto) =>  tot + (producto.precio * producto.cantidad),0)
+function actualizarTotal() {
+    const totalCalculado = productosEnCarrito.reduce((tot, producto) => tot + (producto.precio * producto.cantidad), 0)
     total.innerHTML = `$${totalCalculado}`;
 }
 
-//FUNCION PARA COMPRAR 
+//FUNCION-evento para Comprar  
 botonComprar.addEventListener("click", comprarCarrito);
-function comprarCarrito(){
+function comprarCarrito() {
 
     enviarCompraPorWsp();
 
     productosEnCarrito.length = 0;//vaciamos
     localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito));
 
-    contenedorCarritoVacio.classList.add('disabled'); 
-    contenedorCarritoProductos.classList.add('disabled'); 
-    contenedorCarritoAcciones.classList.add('disabled'); 
+    contenedorCarritoVacio.classList.add('disabled');
+    contenedorCarritoProductos.classList.add('disabled');
+    contenedorCarritoAcciones.classList.add('disabled');
     contenedorCarritoComprado.classList.remove('disabled'); //que aparezca q fue comprado
 
 }
 
-function enviarCompraPorWsp(){
+function enviarCompraPorWsp() {
     // Creo mensaje con la lista de productos
     let mensaje = "¡Hola! Estoy interesado en comprar los siguientes productos: \n";
 
@@ -147,10 +148,55 @@ function enviarCompraPorWsp(){
     window.open(urlWhatsApp, "_blank");  // Redirijo al usuario a wsp
 }
 
-function calcularTotal(){
-   const totalCalcu = productosEnCarrito.reduce((tot,producto) =>  tot + (producto.precio * producto.cantidad),0) ;
+function calcularTotal() {
+    const totalCalcu = productosEnCarrito.reduce((tot, producto) => tot + (producto.precio * producto.cantidad), 0);
     return totalCalcu;
 }
+
+//notificacion de eliminar
+function notificacionDeEliminar() {
+
+    Toastify({
+        text: "Producto Eliminado",
+        duration: 700,
+        offset: {
+            x: 50, //en px, move horizontal (eje x) 
+            y: 15 //en px, move vertical axis (eje y)
+        },
+        close: false,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right,#2c7255,rgb(111, 148, 46))",
+            color: "#fff",
+            borderRadius: "2rem",
+            textTransform: "uppercase",
+            fontSize: "0.75rem", /* tamaño de letra */
+        },
+        onClick: function () { } // Callback after click
+    }).showToast();
+}
+
+function alertaVaciarCarrito() {
+    Swal.fire({
+        title: "Estas Seguro?",
+        icon: "question",
+        html:"Se van a borrar todos tus productos",
+        showCancelButton: true,
+        confirmButtonColor: "#2c7255",
+        /* cancelButtonColor: "#d33", */
+        confirmButtonText: "Si",
+        cancelButtonText: "No"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            vaciarCarrito();
+        }
+    });
+}
+
+
+
 
 
 

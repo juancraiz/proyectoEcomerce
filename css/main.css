@@ -58,7 +58,7 @@ aside{
     flex-direction: column;
     justify-content:space-between;
     gap:0.5rem; /* para q haya un especaio entre cada elemento de la barra */
-    margin-left: -2rem;
+    margin-left: 0rem; /* q tan a la izquierda estara la columna de botonesCategoria */
 
 }
 
@@ -386,7 +386,7 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
     }
 
     .contenedorProductos{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr 1fr; 
         }
 
     .headerMobile{
@@ -431,7 +431,7 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
         padding: 0.5rem;
     } 
 
-    .carritoProductoSubtotal{
+    .carritoProductoPrecio{
         display: none;
     }
 
@@ -440,10 +440,6 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
         row-gap:1rem;
     }
 }
-
-    /* .closeMenu:hover{
-
-    } */
 
     @media screen and (max-width: 400px){
         .contenedorProductos{

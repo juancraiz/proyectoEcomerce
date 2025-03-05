@@ -1,8 +1,11 @@
 /* En este modulo ocultaremos y mostraremos el menu segun el click en el menu Hambu */
-
 const openMenu = document.querySelector('#openMenu');
 const closeMenu = document.querySelector('#closeMenu');
 const aside = document.querySelector('aside');
+
+
+import { botonesCategorias } from './main.js';
+
 
 //Evento de boton de apertura
 openMenu.addEventListener("click", () => {
