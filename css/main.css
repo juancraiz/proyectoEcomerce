@@ -440,10 +440,10 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
         row-gap:1rem;
     }
 
-    .Toastify__toast-container {
+  /*   .Toastify__toast-container {
         z-index: 9999 ;
         display: block ;
-    }      
+    }       */
 }
 
     @media screen and (max-width: 400px){
