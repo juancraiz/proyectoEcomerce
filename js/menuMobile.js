@@ -3,13 +3,9 @@ const openMenu = document.querySelector('#openMenu');
 const closeMenu = document.querySelector('#closeMenu');
 const aside = document.querySelector('aside');
 
-
-import { botonesCategorias } from './main.js';
-
-
 //Evento de boton de apertura
 openMenu.addEventListener("click", () => {
-
+    
     //le añadimos la class asideVisible para q muestre el menu si hacemos click
     aside.classList.add('asideVisible');
 
