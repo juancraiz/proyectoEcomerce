@@ -448,6 +448,6 @@ en nuestro caso cuando el carrito este o no vacio hay q relfejar eso con los ele
 
     @media screen and (max-width: 400px){
         .contenedorProductos{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
         }
     }
